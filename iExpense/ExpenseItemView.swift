@@ -23,10 +23,10 @@ struct ExpenseItemView: View {
           Text(item.name)
             .font(.headline)
           Text(item.type.rawValue.capitalized)
-          Text(DateFormatter.dateFormatter.localizedString(for: item.date , relativeTo: Date()))
+          Text(UIHelper.dateFormatter.localizedString(for: item.date , relativeTo: Date()))
         }
         Spacer()
-        Text(item.amount, format: .currency(code: "USD"))
+        Text(item.amount, format: UIHelper.localCurrency)
           .font(.system(.title))
       }
     }

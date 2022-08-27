@@ -32,7 +32,7 @@ struct ContentView: View {
               Text(result.type.rawValue.capitalized)
             }
             Spacer()
-            Text(result.amount, format: .currency(code: "USD"))
+            Text(result.amount, format: UIHelper.localCurrency)
           }
         }
       }

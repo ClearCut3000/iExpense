@@ -31,7 +31,7 @@ struct AddView: View {
             }
           }
 
-          TextField("Amount", value: $amount, format: .currency(code: "USD"))
+          TextField("Amount", value: $amount, format: UIHelper.localCurrency)
             .keyboardType(.decimalPad)
         }
         .navigationTitle("Add new expense")

@@ -17,7 +17,7 @@
 		36D10AAF28BA7D1F008DA4D3 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D10AAE28BA7D1F008DA4D3 /* Type.swift */; };
 		36D10AB128BA8445008DA4D3 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D10AB028BA8444008DA4D3 /* PickerView.swift */; };
 		36D10AB328BA873B008DA4D3 /* ExpenseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D10AB228BA873B008DA4D3 /* ExpenseItemView.swift */; };
-		36D10AB528BA8BF6008DA4D3 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D10AB428BA8BF6008DA4D3 /* DateFormatter.swift */; };
+		36D10AB528BA8BF6008DA4D3 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D10AB428BA8BF6008DA4D3 /* UIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 		36D10AAE28BA7D1F008DA4D3 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		36D10AB028BA8444008DA4D3 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		36D10AB228BA873B008DA4D3 /* ExpenseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItemView.swift; sourceTree = "<group>"; };
-		36D10AB428BA8BF6008DA4D3 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		36D10AB428BA8BF6008DA4D3 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 				36D10AAA28B962FF008DA4D3 /* AddView.swift */,
 				36D10AB028BA8444008DA4D3 /* PickerView.swift */,
 				36D10AB228BA873B008DA4D3 /* ExpenseItemView.swift */,
-				36D10AB428BA8BF6008DA4D3 /* DateFormatter.swift */,
+				36D10AB428BA8BF6008DA4D3 /* UIHelper.swift */,
 			);
 			path = iExpense;
 			sourceTree = "<group>";
@@ -158,7 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36D10AB528BA8BF6008DA4D3 /* DateFormatter.swift in Sources */,
+				36D10AB528BA8BF6008DA4D3 /* UIHelper.swift in Sources */,
 				36D10AA928B9500F008DA4D3 /* Expenses.swift in Sources */,
 				36D10A9B28B80956008DA4D3 /* ContentView.swift in Sources */,
 				36D10AB328BA873B008DA4D3 /* ExpenseItemView.swift in Sources */,
