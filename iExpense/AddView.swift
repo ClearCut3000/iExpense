@@ -12,7 +12,7 @@ struct AddView: View {
   //MARK: - View Properties
   @State private var name = ""
   @State private var type: Type = .utilities
-  @State private var amount = 0.0
+  @State private var amount: Double? = nil
   @Environment(\.dismiss) var dismiss
 
   @ObservedObject var expenses: Expenses
@@ -32,13 +32,14 @@ struct AddView: View {
           }
 
           TextField("Amount", value: $amount, format: UIHelper.localCurrency)
+            .disableAutocorrection(true)
             .keyboardType(.decimalPad)
         }
         .navigationTitle("Add new expense")
         .toolbar {
           ToolbarItem(placement: .primaryAction) {
             Button("Save") {
-              let item = ExpenseItem(name: name, type: type, amount: amount)
+              let item = ExpenseItem(name: name, type: type, amount: amount ?? 0.0)
               expenses.items.append(item)
               dismiss()
             }

@@ -25,15 +25,7 @@ struct ContentView: View {
       }
       .searchable(text: $searchText) {
         ForEach(searchResults, id: \.self) { result in
-          HStack {
-            VStack(alignment: .leading) {
-              Text(result.name)
-                .font(.headline)
-              Text(result.type.rawValue.capitalized)
-            }
-            Spacer()
-            Text(result.amount, format: UIHelper.localCurrency)
-          }
+          ExpenseItemView(item: result)
         }
       }
       .navigationTitle("iExpense")
@@ -59,7 +51,7 @@ struct ContentView: View {
          if searchText.isEmpty {
            return expenses.items
          } else {
-           return expenses.items.filter { $0.name.contains(searchText) }
+           return expenses.items.filter { $0.name.lowercased().contains(searchText.lowercased()) }
          }
      }
 }
