@@ -19,15 +19,7 @@ struct ContentView: View {
     NavigationView {
       List {
         ForEach(expenses.items, id: \.id) { item in
-          HStack {
-            VStack(alignment: .leading) {
-              Text(item.name)
-                .font(.headline)
-              Text(item.type)
-            }
-            Spacer()
-            Text(item.amount, format: .currency(code: "USD"))
-          }
+          ExpenseItemView(item: item)
         }
         .onDelete(perform: removeItems)
       }
@@ -37,7 +29,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
               Text(result.name)
                 .font(.headline)
-              Text(result.type)
+              Text(result.type.rawValue.capitalized)
             }
             Spacer()
             Text(result.amount, format: .currency(code: "USD"))

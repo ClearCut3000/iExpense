@@ -11,14 +11,13 @@ struct AddView: View {
 
   //MARK: - View Properties
   @State private var name = ""
-  @State private var type = "Personal"
+  @State private var type: Type = .utilities
   @State private var amount = 0.0
   @Environment(\.dismiss) var dismiss
 
   @ObservedObject var expenses: Expenses
 
-  let types = ["Bisness", "Personal"]
-
+  let types = Type.allCases
 
   //MARK: - View Body
     var body: some View {
@@ -28,7 +27,7 @@ struct AddView: View {
 
           Picker("Type", selection: $type) {
             ForEach(types, id: \.self) {
-              Text($0)
+                PickerView(type: $0)
             }
           }
 
@@ -37,10 +36,17 @@ struct AddView: View {
         }
         .navigationTitle("Add new expense")
         .toolbar {
-          Button("Save") {
-            let item = ExpenseItem(name: name, type: type, amount: amount)
-            expenses.items.append(item)
-            dismiss()
+          ToolbarItem(placement: .primaryAction) {
+            Button("Save") {
+              let item = ExpenseItem(name: name, type: type, amount: amount)
+              expenses.items.append(item)
+              dismiss()
+            }
+          }
+          ToolbarItem(placement: .navigationBarLeading) {
+            Button("Cancel") {
+              dismiss()
+            }
           }
         }
       }
