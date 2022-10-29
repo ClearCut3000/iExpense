@@ -24,12 +24,12 @@ struct SelectablePicker: View {
         Text(selectedItems.count == Type.allCases.count ? "All" : "\(selectedItems.count)")
           .frame(width: 28)
           .padding(5)
-          .background(selectedItems.count == Type.allCases.count ? .red : .white)
+          .background(selectedItems.count == Type.allCases.count ? .red : .clear)
           .cornerRadius(10)
           .foregroundColor(selectedItems.count == Type.allCases.count ? .white : .red)
           .overlay(
             RoundedRectangle(cornerRadius: 10)
-              .stroke(selectedItems.count == Type.allCases.count ? .white : .red,
+              .stroke(selectedItems.count == Type.allCases.count ? .clear : .red,
                       lineWidth: 1)
           )
       }
