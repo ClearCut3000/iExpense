@@ -13,47 +13,54 @@ struct ContentView: View {
   @StateObject var expenses = Expenses()
   @State private var searchText = ""
   @State private var showingAddExpense = false
+  @State private var searchType: Type = .donation
+  @State private var selectedItems: [Type] = Type.allCases
 
   //MARK: - View Body
   var body: some View {
     NavigationView {
-      List {
-        ForEach(expenses.items, id: \.id) { item in
-          ExpenseItemView(item: item)
+      VStack {
+        SelectablePicker(selectedItems: $selectedItems)
+        List {
+            ForEach(expenses.items, id: \.id) { item in
+              if selectedItems.contains(item.type) {
+                ExpenseItemView(item: item)
+              }
+            }
+            .onDelete(perform: removeItems)
         }
-        .onDelete(perform: removeItems)
-      }
-      .searchable(text: $searchText) {
-        ForEach(searchResults, id: \.self) { result in
-          ExpenseItemView(item: result)
+        .searchable(text: $searchText) {
+          ForEach(searchResults, id: \.self) { result in
+            ExpenseItemView(item: result)
+          }
         }
-      }
-      .navigationTitle("iExpense")
-      .toolbar {
-        Button {
-          showingAddExpense = true
-        } label: {
-          Image(systemName: "plus")
+        .navigationTitle("iExpense")
+        .toolbar {
+          Button {
+            showingAddExpense = true
+          } label: {
+            Image(systemName: "plus")
+          }
         }
-      }
-      .sheet(isPresented: $showingAddExpense) {
-        AddView(expenses: expenses)
+        .sheet(isPresented: $showingAddExpense) {
+          AddView(expenses: expenses)
+        }
       }
     }
   }
 
   //MARK: - Methods
   func removeItems(at offsets: IndexSet) {
-      expenses.items.remove(atOffsets: offsets)
+    expenses.items.remove(atOffsets: offsets)
   }
 
   var searchResults: [ExpenseItem] {
-         if searchText.isEmpty {
-           return expenses.items
-         } else {
-           return expenses.items.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-         }
-     }
+    if searchText.isEmpty {
+      return expenses.items
+    } else {
+      return expenses.items.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+    }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
